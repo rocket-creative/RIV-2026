@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.local
+.env.production.local
+.env.development.local
+.next/
+.cache/
+dist/
+build/
+*.log
+.DS_Store
+.ai-errors.log
