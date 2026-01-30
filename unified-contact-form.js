@@ -4,14 +4,23 @@
  * Sends all form submissions to: info@rivierawaterfrontmansion.com
  * Backups stored at: https://formspree.io (login to view all submissions)
  * 
- * SETUP: Replace FORMSPREE_ID below with your Formspree form ID
- * 1. Go to https://formspree.io and create free account
- * 2. Create new form, set email to: info@rivierawaterfrontmansion.com
- * 3. Copy form ID (e.g., "xyzabcde") and paste below
+ * ═══════════════════════════════════════════════════════════════════
+ * SETUP REQUIRED (5 minutes):
+ * ═══════════════════════════════════════════════════════════════════
+ * 1. Go to https://formspree.io/register
+ * 2. Create FREE account (no credit card needed)
+ * 3. Click "New Form" → name it "Riviera Contact"
+ * 4. Set email to: info@rivierawaterfrontmansion.com
+ * 5. Copy the form ID (looks like: "xpwzgkqv")
+ * 6. Replace 'YOUR_FORMSPREE_ID' below with your ID
+ * 7. Done! All submissions go to email + backed up in Formspree dashboard
+ * ═══════════════════════════════════════════════════════════════════
  */
 
-const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'; // Replace with your Formspree form ID
+const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'; // ← REPLACE THIS (e.g., 'xpwzgkqv')
 const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
+const FALLBACK_EMAIL = 'info@rivierawaterfrontmansion.com';
+const IS_CONFIGURED = FORMSPREE_ID !== 'YOUR_FORMSPREE_ID';
 
 /**
  * Validate form fields
@@ -60,9 +69,14 @@ function showFieldError(field, message) {
 }
 
 /**
- * Submit form to Formspree
+ * Submit form to Formspree (or fallback to mailto)
  */
 async function submitToFormspree(formData, formType) {
+    // If Formspree not configured, use mailto fallback
+    if (!IS_CONFIGURED) {
+        return submitViaMailto(formData, formType);
+    }
+    
     // Add metadata
     formData.append('_subject', `Riviera Inquiry: ${formType}`);
     formData.append('_form_type', formType);
@@ -80,6 +94,26 @@ async function submitToFormspree(formData, formType) {
     }
     
     return response.json();
+}
+
+/**
+ * Fallback: Open mailto link with form data
+ */
+function submitViaMailto(formData, formType) {
+    const data = {};
+    formData.forEach((value, key) => { data[key] = value; });
+    
+    const subject = encodeURIComponent(`Riviera Inquiry: ${formType}`);
+    const body = encodeURIComponent(
+        Object.entries(data)
+            .map(([k, v]) => `${k}: ${v}`)
+            .join('\n\n') +
+        `\n\n---\nSubmitted from: ${window.location.href}\nTime: ${new Date().toLocaleString()}`
+    );
+    
+    window.location.href = `mailto:${FALLBACK_EMAIL}?subject=${subject}&body=${body}`;
+    
+    return Promise.resolve({ ok: true, fallback: true });
 }
 
 /**
@@ -145,8 +179,12 @@ async function submitUnifiedContactForm(event) {
     
     try {
         const formData = new FormData(form);
-        await submitToFormspree(formData, 'Contact Form');
-        showSuccess(wrapper, "We've received your message and will contact you within 24 hours.");
+        const result = await submitToFormspree(formData, 'Contact Form');
+        if (result.fallback) {
+            showSuccess(wrapper, "Your email app should open. Please click Send to submit your inquiry.");
+        } else {
+            showSuccess(wrapper, "We've received your message and will contact you within 24 hours.");
+        }
     } catch (error) {
         setButtonLoading(button, false);
         showError(form, 'Something went wrong. Please call us at 516-541-5020.');
@@ -171,8 +209,12 @@ async function submitQuizForm(event) {
     
     try {
         const formData = new FormData(form);
-        await submitToFormspree(formData, 'Wedding Quiz');
-        showSuccess(wrapper, "Your personalized consultation request has been received. We'll be in touch within 24 hours!");
+        const result = await submitToFormspree(formData, 'Wedding Quiz');
+        if (result.fallback) {
+            showSuccess(wrapper, "Your email app should open. Please click Send to submit your inquiry.");
+        } else {
+            showSuccess(wrapper, "Your personalized consultation request has been received. We'll be in touch within 24 hours!");
+        }
     } catch (error) {
         setButtonLoading(button, false);
         showError(form, 'Something went wrong. Please call us at 516-541-5020.');
@@ -204,8 +246,12 @@ async function submitBooking(event) {
             formData.append('requested_tour_date', selectedDate.textContent);
         }
         
-        await submitToFormspree(formData, 'Tour Request');
-        showSuccess(wrapper, "Your tour request has been submitted. We'll confirm your appointment within 24 hours.");
+        const result = await submitToFormspree(formData, 'Tour Request');
+        if (result.fallback) {
+            showSuccess(wrapper, "Your email app should open. Please click Send to submit your tour request.");
+        } else {
+            showSuccess(wrapper, "Your tour request has been submitted. We'll confirm your appointment within 24 hours.");
+        }
     } catch (error) {
         setButtonLoading(button, false);
         showError(form, 'Something went wrong. Please call us at 516-541-5020.');
