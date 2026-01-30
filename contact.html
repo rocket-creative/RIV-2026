@@ -7,7 +7,6 @@
     <!-- SEO Meta Tags -->
     <title>Contact Riviera Waterfront Mansion | Schedule a Tour | Long Island Wedding Venue</title>
     <meta name="description" content="Contact Riviera Waterfront Mansion to schedule a tour, check availability, or ask questions about your Long Island waterfront wedding. Call 516-541-5020 or visit us at 200 E Shore Dr, Massapequa, NY 11758.">
-    <meta name="keywords" content="contact Riviera Waterfront Mansion, Long Island wedding venue contact, Massapequa wedding venue, schedule wedding tour, Great South Bay wedding venue contact, wedding venue tour NY, Nassau County wedding venue phone">
     
     <!-- Geographic Meta Tags -->
     <meta name="geo.region" content="US-NY">
@@ -709,6 +708,27 @@
             height: 100%;
             border: none;
         }
+        .consent-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-cream);
+            text-align: center;
+            padding: var(--space-lg);
+        }
+        .consent-placeholder-content {
+            max-width: 300px;
+        }
+        .consent-content-wrapper {
+            width: 100%;
+            height: 100%;
+        }
+        .consent-content-wrapper iframe {
+            width: 100%;
+            height: 100%;
+        }
 
         /* Contact Cards */
         .contact-cards {
@@ -1109,14 +1129,31 @@
                 
                 <div class="map-wrapper reveal">
                     <div class="map-container">
-                        <iframe 
-                            class="map-embed"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.1234567890123!2d-73.4501!3d40.6674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQwJzAyLjciTiA3M8KwMjcnMDAuNCJX!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
-                            allowfullscreen=""
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"
-                            title="Riviera Waterfront Mansion Location">
-                        </iframe>
+                        <!-- Consent Placeholder -->
+                        <div class="consent-placeholder" id="map-consent-placeholder">
+                            <div class="consent-placeholder-content">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom: 1rem; opacity: 0.5;">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                <p style="margin: 0 0 0.5rem 0; font-weight: 600;">Map requires cookies</p>
+                                <p style="margin: 0 0 1rem 0; font-size: 0.875rem; opacity: 0.7;">Enable third-party cookies to view the interactive map</p>
+                                <button type="button" class="btn btn-outline-dark" onclick="ConsentManager.showBanner()">
+                                    Manage Cookie Settings
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Map (loads when consent given) -->
+                        <div class="consent-content-wrapper" style="display: none;">
+                            <iframe 
+                                class="map-embed"
+                                data-consent-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.1234567890123!2d-73.4501!3d40.6674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQwJzAyLjciTiA3M8KwMjcnMDAuNCJX!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Riviera Waterfront Mansion Location">
+                            </iframe>
+                        </div>
                     </div>
                 </div>
                 
@@ -1304,4 +1341,16 @@
             }
 
             // Fallback for prefers-reduced-motion
-            if (window.matchMedia('(prefers-reduc
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelectorAll('.reveal').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                });
+            }
+        });
+    </script>
+    
+    <!-- Cookie Consent Manager -->
+    <script src="consent-manager.js"></script>
+</body>
+</html>

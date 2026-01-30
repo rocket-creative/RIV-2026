@@ -64,8 +64,15 @@ function submitUnifiedContactForm(e) {
         data[key] = value;
     });
     
-    // Simulate form submission (replace with actual API endpoint in production)
-    // In production, you would send this to your backend or a service like Formspree, Netlify Forms, etc.
+    // Form submission
+    // NOTE: This is a preview site. In production, connect to your backend or a service like:
+    // - Formspree (formspree.io)
+    // - Netlify Forms
+    // - Your CRM's form endpoint
+    // For now, this shows a success message for demonstration purposes.
+    
+    console.log('Form submitted with data:', data);
+    
     setTimeout(() => {
         // Show success message
         const formWrapper = form.closest('.contact-form-wrapper') || form.parentNode;
@@ -79,6 +86,7 @@ function submitUnifiedContactForm(e) {
                 </div>
                 <h3 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.75rem; margin-bottom: 0.5rem; color: #2C2C2C;">Thank You!</h3>
                 <p style="color: #4A4A4A; font-size: 1rem;">We've received your message and will contact you within 24 hours.</p>
+                <p style="color: #999; font-size: 0.75rem; margin-top: 1rem;"><em>Preview mode: Connect form to your marketing system for live submissions.</em></p>
             </div>
         `;
         
