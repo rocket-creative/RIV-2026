@@ -1,3 +1,16 @@
+/*!
+ * Riviera Waterfront Mansion - Cookie Consent Manager
+ * Copyright (c) 2024-2026 Riviera Waterfront Mansion. All Rights Reserved.
+ * 
+ * Unauthorized copying, modification, distribution, or use of this code,
+ * via any medium, is strictly prohibited without express written permission.
+ * This code is proprietary and confidential.
+ * 
+ * For licensing inquiries: info@rivierawaterfrontmansion.com
+ * Version: 1.0.0
+ * Last Modified: 2026-02-04
+ */
+
 /**
  * Cookie Consent Manager
  * Riviera Waterfront Mansion

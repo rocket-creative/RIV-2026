@@ -1,29 +1,73 @@
 # Dependencies
 node_modules/
+vendor/
 
-# Environment files
+# Environment files (NEVER COMMIT THESE!)
 .env
 .env.local
+.env.production
 .env.production.local
 .env.development.local
+*.key
+*.pem
+credentials.json
 
 # Build outputs
 .next/
 .cache/
 dist/
 build/
+out/
 
 # Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.ai-errors.log
 
 # System files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+desktop.ini
 
 # Editor files
 .idea/
 .vscode/
 *.swp
+*.swo
+*~
+.project
+.settings/
 
 # Deployment cache (do not commit)
 .deployment/
+.vercel
+.netlify/
+
+# Backup files (do not commit)
+*.backup
+*.bak
+*.old
+*.orig
+
+# Compressed files (original sources)
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# Personal notes (do not commit)
+TODO.md
+NOTES.md
+PERSONAL-*.md
+
+# Database exports (if any)
+*.sql
+*.sqlite
+*.db
