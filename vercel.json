@@ -1,26 +1,4 @@
 {
-  "version": 2,
-  "name": "riviera-waterfront-mansion",
-  "builds": [
-    {
-      "src": "*.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "*.js",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "IMAGES/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -48,7 +26,7 @@
       ]
     },
     {
-      "source": "/(.*).js",
+      "source": "/(.*)\\.js",
       "headers": [
         {
           "key": "Content-Type",
@@ -77,5 +55,6 @@
       "permanent": true
     }
   ],
+  "cleanUrls": true,
   "trailingSlash": false
 }
