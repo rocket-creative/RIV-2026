@@ -1,0 +1,9 @@
+# Riviera Waterfront Mansion - Robots Configuration
+
+User-agent: *
+Allow: /
+Disallow: /IMAGES/
+Disallow: /*.sh$
+Disallow: /*.log$
+
+Sitemap: https://www.rivierawaterfrontmansion.com/sitemap.xml
