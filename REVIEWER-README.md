@@ -12,7 +12,7 @@ This code is **proprietary and confidential**. By accessing this repository, you
 2. **Limited Use:** Review only - no commercial use
 3. **Suggestions Only:** You may suggest changes via pull requests
 4. **No Guarantee:** Suggested changes may or may not be accepted
-5. **Copyright:** All code remains property of Riviera Waterfront Mansion
+5. **Copyright:** All code remains property of UXUI Design Corp
 
 **Violation of these terms may result in legal action.**
 
@@ -296,11 +296,11 @@ Before submitting a PR, verify:
 Open an issue in the repository
 
 **Security vulnerabilities?**  
-Email: info@rivierawaterfrontmansion.com  
+Email: info@uxuidesigncorp.com  
 Subject: "SECURITY: [brief description]"
 
 **Legal questions?**  
-Email: info@rivierawaterfrontmansion.com  
+Email: info@uxuidesigncorp.com  
 Subject: "LEGAL: [brief description]"
 
 ---
@@ -310,7 +310,7 @@ Subject: "LEGAL: [brief description]"
 **This code is NOT open source.**
 
 All code, content, images, and documentation are:
-- Copyright © 2024-2026 Riviera Waterfront Mansion
+- Copyright © 2024-2026 UXUI Design Corp
 - All Rights Reserved
 - Proprietary and Confidential
 

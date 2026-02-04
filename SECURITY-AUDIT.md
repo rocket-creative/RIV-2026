@@ -386,7 +386,7 @@ Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains
    - Review and improve processes
 
 ### Contact:
-**Email:** info@rivierawaterfrontmansion.com  
+**Email:** info@uxuidesigncorp.com  
 **Subject Line:** "SECURITY INCIDENT: [brief description]"
 
 ---

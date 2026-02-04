@@ -86,13 +86,13 @@ Your code is now **production-ready** with enterprise-level security measures. I
 ```javascript
 /*!
  * Riviera Waterfront Mansion - [Component Name]
- * Copyright (c) 2024-2026 Riviera Waterfront Mansion. All Rights Reserved.
+ * Copyright (c) 2024-2026 UXUI Design Corp. All Rights Reserved.
  * 
  * Unauthorized copying, modification, distribution, or use of this code,
  * via any medium, is strictly prohibited without express written permission.
  * This code is proprietary and confidential.
  * 
- * For licensing inquiries: info@rivierawaterfrontmansion.com
+ * For licensing inquiries: info@uxuidesigncorp.com
  */
 ```
 
@@ -411,7 +411,7 @@ client-contributions (Review Sandbox)
 ## 📞 Support Resources
 
 ### If Security Issue Found
-- **Email:** info@rivierawaterfrontmansion.com
+- **Email:** info@uxuidesigncorp.com
 - **Subject:** "SECURITY: [brief description]"
 - **Action:** See incident response in `SECURITY-AUDIT.md`
 

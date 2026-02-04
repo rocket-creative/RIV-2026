@@ -116,11 +116,11 @@ Add this to the top of every JavaScript file:
 ```javascript
 /*!
  * Riviera Waterfront Mansion
- * Copyright (c) 2024-2026 [Your Company Name]. All Rights Reserved.
+ * Copyright (c) 2024-2026 UXUI Design Corp. All Rights Reserved.
  * Unauthorized copying, distribution, or use of this code is strictly prohibited.
  * 
  * This code is proprietary and confidential.
- * Contact: legal@rivierawaterfrontmansion.com
+ * Contact: info@uxuidesigncorp.com
  */
 ```
 
@@ -267,7 +267,7 @@ Before going live:
 
 ### Legal Protection
 - Copyright is automatic (you own it when you create it)
-- Add © notice to footer: `© 2024-2026 Riviera Waterfront Mansion. All Rights Reserved.`
+- Add © notice to footer: `© 2024-2026 UXUI Design Corp. All Rights Reserved.`
 - Register copyright for stronger legal standing (optional, costs money)
 - Terms of Service prohibits copying (already in your site)
 
