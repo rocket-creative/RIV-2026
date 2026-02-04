@@ -297,11 +297,11 @@
             --space-xs: 0.5rem;
             --space-sm: 1rem;
             --space-md: 1.5rem;
-            --space-lg: 2rem;
-            --space-xl: 3rem;
-            --space-2xl: 1.75rem;
-            --space-3xl: 2.5rem;
-            --space-4xl: 8rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --space-3xl: 8rem;
+            --space-4xl: 10rem;
             --container-max: 1400px;
             --container-padding: 1.5rem;
             --transition-fast: 0.2s ease;
@@ -323,10 +323,11 @@
         body {
             font-family: var(--font-body);
             font-size: 1rem;
-            line-height: 1.6;
+            line-height: 1.75;
             color: var(--color-charcoal);
             background-color: var(--color-cream);
             -webkit-font-smoothing: antialiased;
+            letter-spacing: 0.01em;
         }
         img { max-width: 100%; height: auto; display: block; }
         a { color: inherit; text-decoration: none; transition: color var(--transition-fast); }
@@ -334,20 +335,21 @@
         ul, ol { list-style: none; }
         address { font-style: normal; }
 
-        /* Typography */
+        /* Typography - Editorial Magazine Style */
         h1, h2, h3, h4 {
             font-family: var(--font-display);
             font-weight: 500;
-            line-height: 1.2;
+            line-height: 1.15;
             color: var(--color-charcoal);
+            letter-spacing: -0.01em;
         }
-        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
-        h2 { font-size: clamp(2rem, 4vw, 3rem); }
-        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+        h1 { font-size: clamp(2.75rem, 7vw, 5rem); line-height: 1.1; }
+        h2 { font-size: clamp(2.25rem, 5vw, 3.5rem); margin-bottom: var(--space-md); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
         h4 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
-        p { margin-bottom: 1em; }
+        p { margin-bottom: 1.5em; }
         p:last-child { margin-bottom: 0; }
-        .lead { font-size: 1.125rem; line-height: 1.7; color: var(--color-charcoal-light); }
+        .lead { font-size: 1.25rem; line-height: 1.8; color: var(--color-charcoal-light); max-width: 700px; }
 
         /* Container */
         .container {
@@ -658,17 +660,11 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: url('images/optimized/large/_0350334-by-c2.jpg') center/cover no-repeat;
+            background: url('images/optimized/large/_24m0986_panorama-jb-25-c.jpg') center/cover no-repeat;
             opacity: 0.7;
             z-index: 0;
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('/images/placeholder.jpg') center/cover;
-            opacity: 0.4;
-        }
+        /* Hero overlay - no additional image needed */
         .hero-overlay {
             position: absolute;
             inset: 0;
@@ -1023,13 +1019,12 @@
             flex-shrink: 0;
         }
         .instagram-post-image {
-            aspect-ratio: 1;
             overflow: hidden;
         }
         .instagram-post-image img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
             transition: transform var(--transition-slow);
         }
         .instagram-post:hover .instagram-post-image img {
@@ -1297,7 +1292,7 @@
             overflow: hidden;
             border-radius: var(--radius-md);
         }
-        .image-frame img { width: 100%; height: 400px; object-fit: cover; }
+        .image-frame img { width: 100%; height: auto; display: block; }
         
         /* Image Placeholder Styles */
         .image-placeholder {
@@ -1559,18 +1554,17 @@
         }
         .card-image {
             position: relative;
-            height: 220px;
             overflow: hidden;
         }
         .card-image img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
             transition: transform var(--transition-slow);
         }
         .card-image .image-placeholder {
             width: 100%;
-            height: 100%;
+            height: auto;
         }
         .experience-card:hover .card-image img { transform: scale(1.05); }
         .card-content { padding: var(--space-lg); }
@@ -1853,6 +1847,12 @@
         /* Animations */
         .reveal {
             opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .js-enabled .reveal {
+            opacity: 0;
+            transform: translateY(30px);
         }
         
         @media (prefers-reduced-motion: reduce) {
@@ -2351,7 +2351,7 @@
                                  alt="Bride and groom share romantic moment on Riviera's private dock overlooking Great South Bay at golden hour"
                                  loading="lazy"
                                  decoding="async"
-                                 style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);">
+                                 style="width: 100%; height: auto; display: block; border-radius: var(--radius-md);">
                         </div>
                         <div class="image-accent"></div>
                     </div>
@@ -3028,7 +3028,7 @@
                 comments: 27
             },
             {
-                image: "images/optimized/large/_0350708-by-r.jpg",
+                image: "images/optimized/large/_1058951-jj-r.jpg",
                 caption: "First dance magic under the stars ⭐ Nothing beats a waterfront wedding!",
                 likes: 521,
                 comments: 41
@@ -3332,57 +3332,34 @@
             document.documentElement.classList.add('js-enabled');
             
             // GSAP Animations
-            if (typeof gsap !== 'undefined') {
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
                 gsap.registerPlugin(ScrollTrigger);
                 
                 gsap.utils.toArray('.reveal').forEach(element => {
-                    gsap.from(element, {
-                        opacity: 0,
-                        y: 30,
+                    gsap.to(element, {
+                        opacity: 1,
+                        y: 0,
                         duration: 0.8,
                         ease: 'power2.out',
                         scrollTrigger: {
                             trigger: element,
                             start: 'top 85%',
-                            toggleActions: 'play none none none'
+                            toggleActions: 'play none none none',
+                            once: true
                         }
                     });
                 });
             } else {
-                // Fallback: Show all reveal elements if GSAP fails
+                // Fallback: Show all reveal elements if GSAP fails to load
+                console.warn('GSAP not loaded, showing all elements immediately');
                 document.querySelectorAll('.reveal').forEach(el => {
                     el.style.opacity = '1';
-                    el.style.transform = 'none';
+                    el.style.transform = 'translateY(0)';
                 });
             }
             
             // Fallback for prefers-reduced-motion
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelectorAll('.reveal').forEach(el => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'none';
-                });
-            }
-            
-            // GSAP Animations
-            if (typeof gsap !== 'undefined') {
-                gsap.registerPlugin(ScrollTrigger);
-                
-                gsap.utils.toArray('.reveal').forEach(element => {
-                    gsap.from(element, {
-                        opacity: 0,
-                        y: 30,
-                        duration: 0.8,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: element,
-                            start: 'top 85%',
-                            toggleActions: 'play none none none'
-                        }
-                    });
-                });
-            } else {
-                // Fallback: Show all reveal elements if GSAP fails
                 document.querySelectorAll('.reveal').forEach(el => {
                     el.style.opacity = '1';
                     el.style.transform = 'none';

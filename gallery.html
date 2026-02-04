@@ -162,10 +162,10 @@
             --space-sm: 1rem;        /* 16px */
             --space-md: 1.5rem;      /* 24px */
             --space-lg: 2rem;        /* 32px */
-            --space-xl: 3rem;        /* 48px */
-            --space-2xl: 4rem;       /* 64px */
-            --space-3xl: 5rem;       /* 80px */
-            --space-4xl: 6rem;       /* 96px */
+            --space-xl: 4rem;        /* 64px */
+            --space-2xl: 6rem;       /* 96px */
+            --space-3xl: 8rem;       /* 128px */
+            --space-4xl: 10rem;      /* 160px */
             
             /* Layout */
             --container-max: 1400px;
@@ -202,7 +202,8 @@
         body {
             font-family: var(--font-body);
             font-size: 1rem;
-            line-height: 1.6;
+            line-height: 1.75;
+            letter-spacing: 0.01em;
             color: var(--color-charcoal);
             background-color: var(--color-cream);
             -webkit-font-smoothing: antialiased;
@@ -641,7 +642,7 @@
             inset: 0;
             background: 
                 linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 100%),
-                url('images/optimized/large/_0350334-by-c2.jpg') center/cover;
+                url('images/optimized/large/_0359943-by-p.jpg') center/cover;
             opacity: 0.6;
         }
         
@@ -810,53 +811,74 @@
         }
 
         /* ==============================================
-           GALLERY GRID - Clean Uniform Layout
+           GALLERY GRID - Editorial Masonry Layout
+           Magazine-style with generous whitespace
            ============================================== */
         .gallery-section {
-            padding: var(--space-xl) 0 var(--space-3xl);
+            padding: var(--space-3xl) 0 var(--space-4xl);
             background: var(--color-cream);
         }
         
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-sm);
+            column-count: 2;
+            column-gap: var(--space-lg);
         }
         
         @media (min-width: 640px) {
             .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: var(--space-md);
+                column-count: 2;
+                column-gap: var(--space-xl);
             }
         }
         
         @media (min-width: 1024px) {
             .gallery-grid {
-                grid-template-columns: repeat(4, 1fr);
+                column-count: 3;
+                column-gap: var(--space-xl);
             }
         }
         
-        /* Gallery Item */
+        @media (min-width: 1400px) {
+            .gallery-grid {
+                column-count: 3;
+                column-gap: var(--space-2xl);
+            }
+        }
+        
+        /* Gallery Item - Editorial style */
         .gallery-item {
             position: relative;
-            aspect-ratio: 1;
             overflow: hidden;
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-sm);
             cursor: pointer;
             background: var(--color-cream-dark);
             opacity: 0;
             transform: translateY(20px);
+            break-inside: avoid;
+            margin-bottom: var(--space-lg);
+        }
+        
+        @media (min-width: 640px) {
+            .gallery-item {
+                margin-bottom: var(--space-xl);
+            }
+        }
+        
+        @media (min-width: 1400px) {
+            .gallery-item {
+                margin-bottom: var(--space-2xl);
+            }
         }
         
         .gallery-item img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform var(--transition-slow);
+            height: auto;
+            display: block;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
         .gallery-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
         
         .gallery-item__overlay {
@@ -970,36 +992,25 @@
             overflow: hidden;
         }
 
-        /* Single: one horizontal 4:3 placeholder */
-        .photo-block--single {
-            aspect-ratio: 4/3;
-        }
-
+        /* Single photo block */
         .photo-block--single .photo-block__cell {
             width: 100%;
-            height: 100%;
         }
 
-        /* Double: two 9:16 portrait placeholders side by side (combined 9:8 footprint) */
+        /* Double: two photos side by side */
         .photo-block--double {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--space-sm);
+            align-items: start;
         }
 
-        .photo-block--double .photo-block__cell {
-            aspect-ratio: 9/16;
-        }
-
-        /* Triple: three 9:16 portrait placeholders side by side (combined 27:16 footprint) */
+        /* Triple: three photos side by side */
         .photo-block--triple {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: var(--space-sm);
-        }
-
-        .photo-block--triple .photo-block__cell {
-            aspect-ratio: 9/16;
+            align-items: start;
         }
 
         .photo-block__cell {
@@ -1018,8 +1029,8 @@
 
         .photo-block__cell img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
         }
 
         /* Optional: row of photo blocks to break up vertical content */
@@ -1103,7 +1114,6 @@
         
         .space-card {
             position: relative;
-            aspect-ratio: 4/3;
             overflow: hidden;
             border-radius: var(--radius-md);
             cursor: pointer;
@@ -1114,8 +1124,8 @@
         .space-card img,
         .space-card .image-placeholder {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
             transition: transform var(--transition-slow);
         }
         
@@ -1186,8 +1196,8 @@
         .video-wrapper img,
         .video-wrapper .image-placeholder {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
         }
         
         .video-play-btn {
@@ -1236,7 +1246,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: url('/images/cta-bg.jpg') center/cover;
+            background: url('images/optimized/large/_0359671-by-p.jpg') center/cover;
             opacity: 0.2;
         }
         

@@ -138,8 +138,8 @@
             --space-md: 1.5rem;
             --space-lg: 2rem;
             --space-xl: 3rem;
-            --space-2xl: 1.75rem;
-            --space-3xl: 2.5rem;
+            --space-2xl: 6rem;
+            --space-3xl: 8rem;
             --space-4xl: 8rem;
             --container-max: 1400px;
             --container-padding: 1.5rem;
@@ -162,7 +162,8 @@
         body {
             font-family: var(--font-body);
             font-size: 1rem;
-            line-height: 1.6;
+            line-height: 1.75;
+            letter-spacing: 0.01em;
             color: var(--color-charcoal);
             background-color: var(--color-cream);
             -webkit-font-smoothing: antialiased;
@@ -877,14 +878,12 @@
         .media-item img,
         .media-item video {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
         }
-        .media-item.portrait {
-            aspect-ratio: 3/4;
-        }
+        .media-item.portrait,
         .media-item.landscape {
-            aspect-ratio: 4/3;
+            /* Natural aspect ratio */
         }
 
         /* FAQ */
@@ -1096,10 +1095,10 @@
                 <div class="container" style="max-width: 900px;">
                     <div class="section-images">
                         <div class="section-image">
-                            <img src="images/optimized/medium/_0350334-by-c2.jpg" alt="Waterfront wedding ceremony at Riviera gazebo" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);">
+                            <img src="images/optimized/medium/_0350334-by-c2.jpg" alt="Waterfront wedding ceremony at Riviera gazebo" loading="lazy" decoding="async" style="width: 100%; height: auto; display: block; border-radius: var(--radius-md);">
                         </div>
                         <div class="section-image">
-                            <img src="images/optimized/medium/_24m1277-jb-25-r.jpg" alt="Grand ballroom reception at Riviera Waterfront Mansion" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);">
+                            <img src="images/optimized/medium/_24m1277-jb-25-r.jpg" alt="Grand ballroom reception at Riviera Waterfront Mansion" loading="lazy" decoding="async" style="width: 100%; height: auto; display: block; border-radius: var(--radius-md);">
                         </div>
                     </div>
                     
@@ -1233,22 +1232,22 @@
                 </div>
                 <div class="media-grid">
                     <div class="media-item">
-                        <img src="images/optimized/medium/_0350334-by-c2.jpg" alt="Waterfront ceremony at Riviera gazebo" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);">
+                        <img src="images/optimized/medium/_0350334-by-c2.jpg" alt="Waterfront ceremony at Riviera gazebo" loading="lazy" decoding="async" style="width: 100%; height: auto; display: block; border-radius: var(--radius-md);">
                     </div>
                     <div class="media-item">
-                        <img src="images/optimized/medium/_24m3627-sm-r.jpg" alt="Grand ballroom reception" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);">
+                        <img src="images/optimized/medium/_24m3627-sm-r.jpg" alt="Grand ballroom reception" loading="lazy" decoding="async" style="width: 100%; height: auto; display: block; border-radius: var(--radius-md);">
                     </div>
                     <div class="media-item">
-                        <img src="images/optimized/medium/_0359652-by-p.jpg" alt="Romantic waterfront portrait" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);">
+                        <img src="images/optimized/medium/_0359652-by-p.jpg" alt="Romantic waterfront portrait" loading="lazy" decoding="async" style="width: 100%; height: auto; display: block; border-radius: var(--radius-md);">
                     </div>
                     <div class="media-item">
-                        <img src="images/optimized/medium/_24m3481-sm-r.jpg" alt="Cocktail hour celebration" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);">
+                        <img src="images/optimized/medium/_24m3481-sm-r.jpg" alt="Cocktail hour celebration" loading="lazy" decoding="async" style="width: 100%; height: auto; display: block; border-radius: var(--radius-md);">
                     </div>
                     <div class="media-item">
-                        <img src="images/optimized/medium/_0350458-by-d.jpg" alt="Wedding floral details" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);">
+                        <img src="images/optimized/medium/_0350458-by-d.jpg" alt="Wedding floral details" loading="lazy" decoding="async" style="width: 100%; height: auto; display: block; border-radius: var(--radius-md);">
                     </div>
                     <div class="media-item">
-                        <img src="images/optimized/medium/_1058951-jj-r.jpg" alt="First dance in ballroom" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);">
+                        <img src="images/optimized/medium/_1058951-jj-r.jpg" alt="First dance in ballroom" loading="lazy" decoding="async" style="width: 100%; height: auto; display: block; border-radius: var(--radius-md);">
                     </div>
                 </div>
             </div>
@@ -1264,10 +1263,10 @@
                 </div>
                 <div class="media-grid">
                     <div class="media-item">
-                        <img src="images/optimized/medium/_0359830-by-p.jpg" alt="Wedding celebration video preview" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);">
+                        <img src="images/optimized/medium/_0359830-by-p.jpg" alt="Wedding celebration video preview" loading="lazy" decoding="async" style="width: 100%; height: auto; display: block; border-radius: var(--radius-md);">
                     </div>
                     <div class="media-item">
-                        <img src="images/optimized/medium/_24m5730-jd-p.jpg" alt="Venue tour video preview" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);">
+                        <img src="images/optimized/medium/_24m5730-jd-p.jpg" alt="Venue tour video preview" loading="lazy" decoding="async" style="width: 100%; height: auto; display: block; border-radius: var(--radius-md);">
                     </div>
                 </div>
             </div>
@@ -1283,7 +1282,7 @@
 
                 <div class="container" style="max-width: 800px;">
                     <div class="section-image">
-                        <img src="images/optimized/large/_24m0986_panorama-jb-25-c.jpg" alt="Panoramic view of Riviera Waterfront Mansion and grounds" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);">
+                        <img src="images/optimized/large/_24m0986_panorama-jb-25-c.jpg" alt="Panoramic view of Riviera Waterfront Mansion and grounds" loading="lazy" decoding="async" style="width: 100%; height: auto; display: block; border-radius: var(--radius-md);">
                     </div>
                     
                     <ul style="list-style: none;">
@@ -1331,10 +1330,10 @@
                 <div class="container" style="max-width: 900px;">
                     <div class="section-images">
                         <div class="section-image">
-                            <img src="images/optimized/medium/_0359671-by-p.jpg" alt="Couple with stunning bay views" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);">
+                            <img src="images/optimized/medium/_0359671-by-p.jpg" alt="Couple with stunning bay views" loading="lazy" decoding="async" style="width: 100%; height: auto; display: block; border-radius: var(--radius-md);">
                         </div>
                         <div class="section-image">
-                            <img src="images/optimized/medium/_24m3284-sm-p.jpg" alt="Wedding in the gardens" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);">
+                            <img src="images/optimized/medium/_24m3284-sm-p.jpg" alt="Wedding in the gardens" loading="lazy" decoding="async" style="width: 100%; height: auto; display: block; border-radius: var(--radius-md);">
                         </div>
                     </div>
                     
@@ -1380,7 +1379,7 @@
                 </div>
 
                 <div class="section-image">
-                    <img src="images/optimized/large/_0350379-by-c2.jpg" alt="Beautiful waterfront ceremony at Riviera Waterfront Mansion" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md);">
+                    <img src="images/optimized/large/_0350379-by-c2.jpg" alt="Beautiful waterfront ceremony at Riviera Waterfront Mansion" loading="lazy" decoding="async" style="width: 100%; height: auto; display: block; border-radius: var(--radius-md);">
                 </div>
 
                 <div style="max-width: 800px; margin: var(--space-2xl) auto 0;">
