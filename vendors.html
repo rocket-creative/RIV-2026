@@ -148,6 +148,25 @@
         .btn-outline-gold { background: transparent; color: var(--color-gold); border: 2px solid var(--color-gold); }
         .btn-outline-gold:hover { background: var(--color-gold); color: var(--color-white); }
         .btn-lg { padding: 1rem 2.25rem; font-size: 0.9375rem; }
+
+        /* ============================================
+           GLASSMORPHISM EFFECT
+           ============================================ */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (min-width: 768px) {
+            .glass-effect {
+                padding: 3rem 4rem;
+            }
+        }
         .section-tag { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-gold); margin-bottom: var(--space-sm); }
         .section-tag-light { color: var(--color-gold-light); }
         .section { padding: var(--space-3xl) 0; }
@@ -238,7 +257,8 @@
         .mobile-menu-cta a { display: block; text-align: center; padding: var(--space-sm); margin-bottom: var(--space-sm); }
 
         /* Page Hero */
-        .page-hero { position: relative; min-height: 50vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--color-charcoal) 0%, var(--color-black) 100%); margin-top: var(--header-height); }
+        .page-hero { position: relative; min-height: 50vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--color-charcoal) 0%, var(--color-black) 100%); margin-top: var(--header-height); overflow: hidden; }
+        .page-hero::before { content: ''; position: absolute; inset: 0; background: url('images/optimized/large/_1058101-jj-d.jpg') center/cover; opacity: 0.4; }
         .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%); }
         .page-hero-content { position: relative; z-index: 2; text-align: center; padding: var(--space-3xl) var(--container-padding); max-width: 900px; }
         .page-hero h1 { color: var(--color-white); margin-bottom: var(--space-md); }
@@ -354,7 +374,6 @@
                                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="real-weddings.html">Real Weddings</a></li>
                     <li class="nav-dropdown">
                         <a href="#" class="dropdown-toggle">Your Wedding <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
                         <ul class="dropdown-menu">
@@ -386,7 +405,6 @@
                     <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="real-weddings.html">Real Weddings</a></li>
                 <li class="mobile-dropdown">
                     <span class="mobile-dropdown-label">Your Wedding</span>
                     <ul class="mobile-dropdown-menu">
@@ -413,11 +431,13 @@
         <section class="page-hero">
             <div class="page-hero-overlay"></div>
             <div class="page-hero-content">
-                <nav class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Preferred Vendors</span></nav>
-                <span class="section-tag section-tag-light">Trusted Partners</span>
-                <h1>Preferred Vendors</h1>
-                <p class="lead">Hand-Picked Professionals Who Know Our Venue</p>
-                <p style="margin-top: var(--space-md);">Our preferred vendors have been carefully selected by The Riviera at Massapequa. These professionals can help make your event a great success—and they already know the best spots for photos, the perfect timing for setups, and how to work seamlessly with our team.</p>
+                <div class="glass-effect">
+                    <nav class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Preferred Vendors</span></nav>
+                    <span class="section-tag section-tag-light">Trusted Partners</span>
+                    <h1>Preferred Vendors</h1>
+                    <p class="lead">Hand-Picked Professionals Who Know Our Venue</p>
+                    <p style="margin-top: var(--space-md);">Our preferred vendors have been carefully selected by The Riviera at Massapequa. These professionals can help make your event a great success—and they already know the best spots for photos, the perfect timing for setups, and how to work seamlessly with our team.</p>
+                </div>
             </div>
         </section>
 
@@ -701,7 +721,6 @@
                     </div>
                 </div>
                 <nav class="footer-nav">
-                    <div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="real-weddings.html">Real Weddings</a></li><li><a href="menu.html">Menu</a></li><li><a href="rates-booking.html">Rates</a></li></ul></div>
                     <div class="footer-col"><h4>Information</h4><ul><li><a href="about.html">About Us</a></li><li><a href="vendors.html">Vendors</a></li><li><a href="privacy-policy.html">Privacy</a></li><li><a href="terms-conditions.html">Terms</a></li></ul></div>
                     <div class="footer-col"><h4>Contact</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="tel:516-541-5020">516-541-5020</a></li><li>200 E Shore Dr</li><li>Massapequa, NY 11758</li></ul></div>
                 </nav>

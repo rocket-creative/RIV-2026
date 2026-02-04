@@ -241,6 +241,25 @@
             color: var(--color-white);
         }
         .btn-lg { padding: 1rem 2.25rem; font-size: 0.9375rem; }
+
+        /* ============================================
+           GLASSMORPHISM EFFECT
+           ============================================ */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (min-width: 768px) {
+            .glass-effect {
+                padding: 3rem 4rem;
+            }
+        }
         .btn-block { width: 100%; }
 
         /* Section Tags */
@@ -981,7 +1000,6 @@
                                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="real-weddings.html">Real Weddings</a></li>
                     <li class="nav-dropdown">
                         <a href="#" class="dropdown-toggle">Your Wedding <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
                         <ul class="dropdown-menu">
@@ -1018,7 +1036,6 @@
                         <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="real-weddings.html">Real Weddings</a></li>
                 <li class="mobile-dropdown">
                     <span class="mobile-dropdown-label">Your Wedding</span>
                     <ul class="mobile-dropdown-menu">
@@ -1043,14 +1060,16 @@
         <section class="page-hero">
             <div class="page-hero-overlay"></div>
             <div class="page-hero-content">
-                <span class="section-tag section-tag-light">2026 Availability</span>
-                <h1>2026 Rates & Availability</h1>
-                <p class="lead">Transparent, Date-Based Pricing for Your Riviera Wedding</p>
-                <p>We know that clear, upfront pricing makes planning easier. Our 2026 rates are designed to be simple and predictable, based on per-person pricing starting at <strong>$150++</strong>, day-of-week differences (Thursday, Friday, Saturday, Sunday), seasonal adjustments during our busiest months, and guest minimums that support a full, vibrant celebration.</p>
-                <p>"++" indicates that standard tax and service are additional.</p>
-                <div class="hero-cta-group">
-                    <a href="#calendar" class="btn btn-primary btn-lg">Check My 2026 Date</a>
-                    <a href="#booking" class="btn btn-outline btn-lg">Book a Private Tour</a>
+                <div class="glass-effect">
+                    <span class="section-tag section-tag-light">2026 Availability</span>
+                    <h1>2026 Rates & Availability</h1>
+                    <p class="lead">Transparent, Date-Based Pricing for Your Riviera Wedding</p>
+                    <p>We know that clear, upfront pricing makes planning easier. Our 2026 rates are designed to be simple and predictable, based on per-person pricing starting at <strong>$150++</strong>, day-of-week differences (Thursday, Friday, Saturday, Sunday), seasonal adjustments during our busiest months, and guest minimums that support a full, vibrant celebration.</p>
+                    <p>"++" indicates that standard tax and service are additional.</p>
+                    <div class="hero-cta-group">
+                        <a href="#calendar" class="btn btn-primary btn-lg">Check My 2026 Date</a>
+                        <a href="#booking" class="btn btn-outline btn-lg">Book a Private Tour</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1485,7 +1504,6 @@
                         <ul>
                             <li><a href="index.html">Home</a></li>
                             <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="real-weddings.html">Real Weddings</a></li>
                             <li><a href="menu.html">Menu</a></li>
                         </ul>
                     </div>

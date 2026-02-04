@@ -357,6 +357,23 @@
             padding: 0 var(--container-padding);
         }
 
+        /* Glassmorphism Effect for Hero Text */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (min-width: 768px) {
+            .glass-effect {
+                padding: 3rem 4rem;
+            }
+        }
+
         /* Buttons */
         .btn {
             display: inline-flex;
@@ -1897,7 +1914,6 @@
                 <ul class="nav-menu">
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="real-weddings.html">Real Weddings</a></li>
                     <li class="nav-dropdown">
                         <a href="#" class="dropdown-toggle">Your Wedding <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></a>
                         <ul class="dropdown-menu">
@@ -1934,7 +1950,6 @@
             <ul>
                 <li><a href="index.html" onclick="closeMobileMenu()">Home</a></li>
                 <li><a href="gallery.html" onclick="closeMobileMenu()">Gallery</a></li>
-                <li><a href="real-weddings.html" onclick="closeMobileMenu()">Real Weddings</a></li>
                 <li class="mobile-dropdown">
                     <span class="mobile-dropdown-label">Your Wedding</span>
                     <ul class="mobile-dropdown-menu">
@@ -1974,29 +1989,31 @@
         <section class="hero">
             <div class="hero-overlay"></div>
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span>Est. 1947</span>
-                    <span class="separator">•</span>
-                    <span>Long Island, NY</span>
-                </div>
-                <h1 class="hero-title">Riviera Waterfront Mansion</h1>
-                <p class="hero-subtitle">A Long Island Waterfront Wedding Mansion With One Event Per Day</p>
-                <div class="hero-cta-group">
-                    <a href="#quiz" class="btn btn-primary btn-lg">Start Planning</a>
-                    <a href="#booking" class="btn btn-outline btn-lg">Book a Tour</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">75+</span>
-                        <span class="stat-label">Years of Excellence</span>
+                <div class="glass-effect">
+                    <div class="hero-badge">
+                        <span>Est. 1947</span>
+                        <span class="separator">•</span>
+                        <span>Long Island, NY</span>
                     </div>
-                    <div class="stat">
-                        <span class="stat-number">350</span>
-                        <span class="stat-label">Guest Capacity</span>
+                    <h1 class="hero-title">Riviera Waterfront Mansion</h1>
+                    <p class="hero-subtitle">A Long Island Waterfront Wedding Mansion With One Event Per Day</p>
+                    <div class="hero-cta-group">
+                        <a href="#quiz" class="btn btn-primary btn-lg">Start Planning</a>
+                        <a href="#booking" class="btn btn-outline btn-lg">Book a Tour</a>
                     </div>
-                    <div class="stat">
-                        <span class="stat-number">5★</span>
-                        <span class="stat-label">Google Rating</span>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">75+</span>
+                            <span class="stat-label">Years of Excellence</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">350</span>
+                            <span class="stat-label">Guest Capacity</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">5★</span>
+                            <span class="stat-label">Google Rating</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2878,7 +2895,6 @@
                         <ul>
                             <li><a href="index.html">Home</a></li>
                             <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="real-weddings.html">Real Weddings</a></li>
                             <li><a href="menu.html">Menu</a></li>
                         </ul>
                     </div>
@@ -2982,37 +2998,37 @@
         // Mock Instagram posts (will be replaced by API data)
         const mockInstagramPosts = [
             {
-                image: "/images/placeholder.jpg",
+                image: "images/optimized/large/_0359655-by-p.jpg",
                 caption: "✨ When the sunset hits just right... Another magical evening at Riviera! #WaterfrontWedding #LongIslandBride",
                 likes: 234,
                 comments: 18
             },
             {
-                image: "/images/placeholder.jpg",
+                image: "images/optimized/large/_0350576-by-r.jpg",
                 caption: "Love was definitely in the air this weekend! 💕 Congratulations to our beautiful couple!",
                 likes: 456,
                 comments: 32
             },
             {
-                image: "/images/placeholder.jpg",
+                image: "images/optimized/large/_1058422-by-c2.jpg",
                 caption: "Our grand ballroom all dressed up and ready for tonight's celebration ✨",
                 likes: 312,
                 comments: 24
             },
             {
-                image: "/images/placeholder.jpg",
+                image: "images/optimized/large/_0350449-by-d.jpg",
                 caption: "Indoor ceremonies with a view 🌊 Rain or shine, we've got you covered!",
                 likes: 278,
                 comments: 15
             },
             {
-                image: "/images/placeholder.jpg",
+                image: "images/optimized/large/_0359830-by-p.jpg",
                 caption: "Bridal party goals! 👰‍♀️💐 Thank you for including us in your special day!",
                 likes: 389,
                 comments: 27
             },
             {
-                image: "/images/placeholder.jpg",
+                image: "images/optimized/large/_0350708-by-r.jpg",
                 caption: "First dance magic under the stars ⭐ Nothing beats a waterfront wedding!",
                 likes: 521,
                 comments: 41

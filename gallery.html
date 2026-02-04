@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Primary SEO Meta Tags -->
-    <title>Photo Gallery | Riviera Waterfront Mansion</title>
-    <meta name="description" content="Browse real wedding photos: waterfront ceremonies, ballroom receptions, sunset portraits, and venue details at Riviera Waterfront Mansion.">
+    <title>Photo Gallery & Real Weddings | Riviera Waterfront Mansion</title>
+    <meta name="description" content="Browse real wedding photos and venue galleries: waterfront ceremonies, ballroom receptions, sunset portraits, and real couple celebrations at Riviera Waterfront Mansion.">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="Riviera Waterfront Mansion">
+    <parameter name="author" content="Riviera Waterfront Mansion">
     
     <!-- Geographic Meta Tags -->
     <meta name="geo.region" content="US-NY">
@@ -727,6 +727,25 @@
             font-style: italic;
             color: var(--color-charcoal);
             text-align: left;
+        }
+
+        /* ==============================================
+           GLASSMORPHISM EFFECT FOR HERO TEXT
+           ============================================== */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: var(--space-lg) var(--space-xl);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (min-width: 768px) {
+            .glass-effect {
+                padding: var(--space-xl) var(--space-2xl);
+            }
         }
 
         /* ==============================================
@@ -1590,7 +1609,6 @@
                                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="gallery.html" class="active">Gallery</a></li>
-                    <li><a href="real-weddings.html">Real Weddings</a></li>
                     <li class="nav-dropdown">
                         <a href="#" class="dropdown-toggle">Your Wedding <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
                         <ul class="dropdown-menu">
@@ -1627,7 +1645,6 @@
                         <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="real-weddings.html">Real Weddings</a></li>
                 <li class="mobile-dropdown">
                     <span class="mobile-dropdown-label">Your Wedding</span>
                     <ul class="mobile-dropdown-menu">
@@ -1687,6 +1704,7 @@
                 <button class="filter-btn" data-filter="ceremonies" aria-pressed="false">Ceremonies</button>
                 <button class="filter-btn" data-filter="receptions" aria-pressed="false">Receptions</button>
                 <button class="filter-btn" data-filter="couples" aria-pressed="false">Couples</button>
+                <button class="filter-btn" data-filter="real-weddings" aria-pressed="false">Real Weddings</button>
                 <button class="filter-btn" data-filter="details" aria-pressed="false">Details</button>
                 <button class="filter-btn" data-filter="venue" aria-pressed="false">Venue</button>
             </div>
@@ -2277,7 +2295,6 @@
                         <ul>
                             <li><a href="index.html">Home</a></li>
                             <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="real-weddings.html">Real Weddings</a></li>
                             <li><a href="menu.html">Menu</a></li>
                         </ul>
                     </div>
