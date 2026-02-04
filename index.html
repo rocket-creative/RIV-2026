@@ -286,8 +286,8 @@
             --color-gold-dark: #8B6914;
             --color-cream: #FBF9F6;
             --color-cream-dark: #F5F1EA;
-            --color-charcoal: #2C2C2C;
-            --color-charcoal-light: #4A4A4A;
+            --color-charcoal: #4A4A4A;
+            --color-charcoal-light: #6B6B6B;
             --color-white: #FFFFFF;
             --color-black: #1A1A1A;
             --color-success: #2E7D32;
@@ -476,7 +476,7 @@
             }
         }
 
-        /* Buttons */
+        /* Buttons - Equal Width System */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -492,6 +492,7 @@
             transition: all var(--transition-base);
             white-space: nowrap;
             cursor: pointer;
+            min-width: 200px;
         }
         .btn-primary {
             background: var(--color-gold);
@@ -511,6 +512,7 @@
             background: transparent;
             color: var(--color-white);
             border: 2px solid var(--color-white);
+            min-width: 200px;
         }
         .btn-outline:hover {
             background: var(--color-white);
@@ -520,13 +522,18 @@
             background: transparent;
             color: var(--color-charcoal);
             border: 2px solid var(--color-charcoal);
+            min-width: 200px;
         }
         .btn-outline-dark:hover {
             background: var(--color-charcoal);
             color: var(--color-white);
         }
-        .btn-lg { padding: 1rem 2.25rem; font-size: 0.9375rem; }
-        .btn-block { width: 100%; }
+        .btn-lg { 
+            padding: 1rem 2.25rem; 
+            font-size: 0.9375rem; 
+            min-width: 220px;
+        }
+        .btn-block { width: 100%; min-width: auto; }
 
         /* Section Tags */
         .section-tag {
