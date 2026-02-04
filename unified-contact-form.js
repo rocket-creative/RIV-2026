@@ -1,3 +1,16 @@
+/*!
+ * Riviera Waterfront Mansion - Unified Contact Form Handler
+ * Copyright (c) 2024-2026 UXUI Design Corp. All Rights Reserved.
+ * 
+ * Unauthorized copying, modification, distribution, or use of this code,
+ * via any medium, is strictly prohibited without express written permission.
+ * This code is proprietary and confidential.
+ * 
+ * For licensing inquiries: info@uxuidesigncorp.com
+ * Version: 2.0.0
+ * Last Modified: 2026-02-04
+ */
+
 /**
  * Riviera Waterfront Mansion - Form Handler
  * 
@@ -23,7 +36,20 @@ const FALLBACK_EMAIL = 'info@rivierawaterfrontmansion.com';
 const IS_CONFIGURED = FORMSPREE_ID !== 'YOUR_FORMSPREE_ID';
 
 /**
- * Validate form fields
+ * Sanitize user input to prevent XSS
+ */
+function sanitizeInput(str) {
+    if (typeof str !== 'string') return '';
+    return str
+        .trim()
+        .replace(/[<>]/g, '') // Remove angle brackets
+        .replace(/javascript:/gi, '') // Remove javascript: protocol
+        .replace(/on\w+=/gi, '') // Remove event handlers
+        .substring(0, 1000); // Limit length
+}
+
+/**
+ * Validate form fields with enhanced security
  */
 function validateForm(form) {
     let isValid = true;
@@ -45,18 +71,31 @@ function validateForm(form) {
         } else if (field.type === 'tel' && !isValidPhone(value)) {
             showFieldError(field, 'Please enter a valid phone number');
             isValid = false;
+        } else if (field.tagName === 'TEXTAREA' && value.length > 2000) {
+            showFieldError(field, 'Message is too long (max 2000 characters)');
+            isValid = false;
+        } else if (field.type === 'text' && value.length > 200) {
+            showFieldError(field, 'Input is too long (max 200 characters)');
+            isValid = false;
         }
+        
+        // Sanitize the value
+        field.value = sanitizeInput(field.value);
     });
     
     return isValid;
 }
 
 function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    // More strict email validation
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email) && email.length <= 254;
 }
 
 function isValidPhone(phone) {
-    return /^[\d\s\-\(\)\+]{10,}$/.test(phone);
+    // Allow only digits, spaces, dashes, parentheses, and plus
+    const cleanPhone = phone.replace(/[\s\-\(\)\+]/g, '');
+    return /^\d{10,15}$/.test(cleanPhone);
 }
 
 function showFieldError(field, message) {
@@ -77,15 +116,25 @@ async function submitToFormspree(formData, formType) {
         return submitViaMailto(formData, formType);
     }
     
+    // Sanitize all form data before submission
+    const sanitizedData = new FormData();
+    for (let [key, value] of formData.entries()) {
+        if (typeof value === 'string') {
+            sanitizedData.append(key, sanitizeInput(value));
+        } else {
+            sanitizedData.append(key, value);
+        }
+    }
+    
     // Add metadata
-    formData.append('_subject', `Riviera Inquiry: ${formType}`);
-    formData.append('_form_type', formType);
-    formData.append('_submitted_at', new Date().toISOString());
-    formData.append('_page_url', window.location.href);
+    sanitizedData.append('_subject', `Riviera Inquiry: ${formType}`);
+    sanitizedData.append('_form_type', formType);
+    sanitizedData.append('_submitted_at', new Date().toISOString());
+    sanitizedData.append('_page_url', window.location.href);
     
     const response = await fetch(FORMSPREE_URL, {
         method: 'POST',
-        body: formData,
+        body: sanitizedData,
         headers: { 'Accept': 'application/json' }
     });
     

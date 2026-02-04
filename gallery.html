@@ -36,6 +36,12 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.rivierawaterfrontmansion.com/gallery">
     
+    <!-- Pinterest Rich Pins -->
+    <meta name="pinterest-rich-pin" content="true">
+    
+    <!-- Pinterest SDK -->
+    <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -635,7 +641,7 @@
             inset: 0;
             background: 
                 linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 100%),
-                url('/images/gallery-hero.jpg') center/cover;
+                url('images/optimized/large/_0350334-by-c2.jpg') center/cover;
             opacity: 0.6;
         }
         
@@ -880,6 +886,36 @@
             color: var(--color-charcoal);
         }
         
+        .gallery-item__pinterest {
+            position: absolute;
+            top: var(--space-md);
+            left: var(--space-md);
+            width: 40px;
+            height: 40px;
+            background: #E60023;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all var(--transition-base);
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        .gallery-item__pinterest:hover {
+            background: #ad081b;
+            transform: scale(1.1);
+        }
+        
+        .gallery-item:hover .gallery-item__pinterest {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
         .gallery-item:hover .gallery-item__zoom {
             opacity: 1;
             transform: scale(1);
@@ -903,6 +939,82 @@
             font-weight: 500;
             letter-spacing: 0.05em;
             text-transform: uppercase;
+        }
+
+        /* ==============================================
+           PHOTO BLOCK - 1 horizontal (4:3) OR 2 or 3 portrait (9:16) side by side
+           Use to break up vertical content.
+           ============================================== */
+        .photo-block {
+            width: 100%;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        /* Single: one horizontal 4:3 placeholder */
+        .photo-block--single {
+            aspect-ratio: 4/3;
+        }
+
+        .photo-block--single .photo-block__cell {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Double: two 9:16 portrait placeholders side by side (combined 9:8 footprint) */
+        .photo-block--double {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-sm);
+        }
+
+        .photo-block--double .photo-block__cell {
+            aspect-ratio: 9/16;
+        }
+
+        /* Triple: three 9:16 portrait placeholders side by side (combined 27:16 footprint) */
+        .photo-block--triple {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-sm);
+        }
+
+        .photo-block--triple .photo-block__cell {
+            aspect-ratio: 9/16;
+        }
+
+        .photo-block__cell {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #E8E4DD 0%, #D5D0C7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9A9589;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .photo-block__cell img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Optional: row of photo blocks to break up vertical content */
+        .photo-blocks-row {
+            display: grid;
+            gap: var(--space-xl);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .photo-blocks-row {
+                gap: var(--space-2xl);
+            }
         }
 
         /* ==============================================
@@ -1237,6 +1349,27 @@
             text-align: center;
         }
         
+        .lightbox__pinterest {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: var(--space-sm);
+            padding: 0.5rem 1rem;
+            background: #E60023;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .lightbox__pinterest:hover {
+            background: #ad081b;
+            transform: scale(1.05);
+        }
+        
         .lightbox__caption h4 {
             color: var(--color-white);
             font-size: 1.25rem;
@@ -1457,6 +1590,7 @@
                                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="real-weddings.html">Real Weddings</a></li>
                     <li class="nav-dropdown">
                         <a href="#" class="dropdown-toggle">Your Wedding <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
                         <ul class="dropdown-menu">
@@ -1493,6 +1627,7 @@
                         <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="real-weddings.html">Real Weddings</a></li>
                 <li class="mobile-dropdown">
                     <span class="mobile-dropdown-label">Your Wedding</span>
                     <ul class="mobile-dropdown-menu">
@@ -1564,13 +1699,18 @@
                     
                     <!-- Waterfront Ceremony -->
                     <article class="gallery-item" data-category="ceremonies" role="listitem">
-                        <div class="image-placeholder" aria-label="Waterfront ceremony">Photo</div>
+                        <img src="images/optimized/medium/_0350334-by-c2.jpg" alt="Waterfront wedding ceremony at Riviera gazebo overlooking Great South Bay at golden hour" loading="lazy" decoding="async">
                         <div class="gallery-item__overlay">
                             <div class="gallery-item__info">
                                 <h4>Waterfront Ceremony</h4>
                                 <span>Ceremonies</span>
                             </div>
                         </div>
+                        <button class="gallery-item__pinterest" aria-label="Save to Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </button>
                         <div class="gallery-item__zoom" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -1581,13 +1721,18 @@
 
                     <!-- Grand Ballroom -->
                     <article class="gallery-item" data-category="receptions" role="listitem">
-                        <div class="image-placeholder" aria-label="Grand ballroom reception">Photo</div>
+                        <img src="images/optimized/medium/_24m3627-sm-r.jpg" alt="Grand ballroom wedding reception at Riviera Waterfront Mansion with elegant table settings" loading="lazy" decoding="async">
                         <div class="gallery-item__overlay">
                             <div class="gallery-item__info">
                                 <h4>Grand Ballroom</h4>
                                 <span>Receptions</span>
                             </div>
                         </div>
+                        <button class="gallery-item__pinterest" aria-label="Save to Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </button>
                         <div class="gallery-item__zoom" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -1598,13 +1743,18 @@
 
                     <!-- Bridal Suite -->
                     <article class="gallery-item" data-category="venue" role="listitem">
-                        <div class="image-placeholder" aria-label="Bridal suite">Photo</div>
+                        <img src="images/optimized/medium/_50m1191-jj-p.jpg" alt="Bride in elegant bridal suite at Riviera Waterfront Mansion preparing for ceremony" loading="lazy" decoding="async">
                         <div class="gallery-item__overlay">
                             <div class="gallery-item__info">
                                 <h4>Bridal Suite</h4>
                                 <span>Venue</span>
                             </div>
                         </div>
+                        <button class="gallery-item__pinterest" aria-label="Save to Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </button>
                         <div class="gallery-item__zoom" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -1615,13 +1765,18 @@
 
                     <!-- Table Setting -->
                     <article class="gallery-item" data-category="details" role="listitem">
-                        <div class="image-placeholder" aria-label="Elegant table setting">Photo</div>
+                        <img src="images/optimized/medium/_2004078-sm-t.jpg" alt="Elegant wedding table setting with fine china and crystal at Riviera Waterfront Mansion" loading="lazy" decoding="async">
                         <div class="gallery-item__overlay">
                             <div class="gallery-item__info">
                                 <h4>Table Setting</h4>
                                 <span>Details</span>
                             </div>
                         </div>
+                        <button class="gallery-item__pinterest" aria-label="Save to Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </button>
                         <div class="gallery-item__zoom" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -1632,13 +1787,18 @@
 
                     <!-- Sunset Portrait -->
                     <article class="gallery-item" data-category="couples" role="listitem">
-                        <div class="image-placeholder" aria-label="Sunset couple portrait">Photo</div>
+                        <img src="images/optimized/medium/_0359652-by-p.jpg" alt="Newlyweds share romantic sunset portrait on Riviera's private dock overlooking Great South Bay" loading="lazy" decoding="async">
                         <div class="gallery-item__overlay">
                             <div class="gallery-item__info">
                                 <h4>Sunset Portrait</h4>
                                 <span>Couples</span>
                             </div>
                         </div>
+                        <button class="gallery-item__pinterest" aria-label="Save to Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </button>
                         <div class="gallery-item__zoom" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -1649,13 +1809,18 @@
 
                     <!-- Gazebo Ceremony -->
                     <article class="gallery-item" data-category="ceremonies" role="listitem">
-                        <div class="image-placeholder" aria-label="Gazebo ceremony">Photo</div>
+                        <img src="images/optimized/medium/_0350379-by-c2.jpg" alt="Wedding ceremony at waterfront gazebo with guests seated and bay views" loading="lazy" decoding="async">
                         <div class="gallery-item__overlay">
                             <div class="gallery-item__info">
                                 <h4>Gazebo Ceremony</h4>
                                 <span>Ceremonies</span>
                             </div>
                         </div>
+                        <button class="gallery-item__pinterest" aria-label="Save to Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </button>
                         <div class="gallery-item__zoom" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -1666,13 +1831,18 @@
 
                     <!-- Floral Design -->
                     <article class="gallery-item" data-category="details" role="listitem">
-                        <div class="image-placeholder" aria-label="Wedding florals">Photo</div>
+                        <img src="images/optimized/medium/_0350458-by-d.jpg" alt="Elegant bridal bouquet with seasonal blooms at Riviera Waterfront Mansion" loading="lazy" decoding="async">
                         <div class="gallery-item__overlay">
                             <div class="gallery-item__info">
                                 <h4>Floral Design</h4>
                                 <span>Details</span>
                             </div>
                         </div>
+                        <button class="gallery-item__pinterest" aria-label="Save to Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </button>
                         <div class="gallery-item__zoom" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -1683,13 +1853,18 @@
 
                     <!-- First Dance -->
                     <article class="gallery-item" data-category="receptions" role="listitem">
-                        <div class="image-placeholder" aria-label="First dance">Photo</div>
+                        <img src="images/optimized/medium/_1058951-jj-r.jpg" alt="Couple's first dance in the grand ballroom under crystal chandeliers" loading="lazy" decoding="async">
                         <div class="gallery-item__overlay">
                             <div class="gallery-item__info">
                                 <h4>First Dance</h4>
                                 <span>Receptions</span>
                             </div>
                         </div>
+                        <button class="gallery-item__pinterest" aria-label="Save to Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </button>
                         <div class="gallery-item__zoom" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -1700,13 +1875,18 @@
 
                     <!-- Mansion Exterior -->
                     <article class="gallery-item" data-category="venue" role="listitem">
-                        <div class="image-placeholder" aria-label="Mansion exterior">Photo</div>
+                        <img src="images/optimized/medium/_24m0986_panorama-jb-25-c.jpg" alt="Panoramic view of Riviera Waterfront Mansion exterior overlooking Great South Bay" loading="lazy" decoding="async">
                         <div class="gallery-item__overlay">
                             <div class="gallery-item__info">
                                 <h4>Mansion Exterior</h4>
                                 <span>Venue</span>
                             </div>
                         </div>
+                        <button class="gallery-item__pinterest" aria-label="Save to Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </button>
                         <div class="gallery-item__zoom" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -1717,13 +1897,18 @@
 
                     <!-- Sunset Ceremony -->
                     <article class="gallery-item" data-category="ceremonies" role="listitem">
-                        <div class="image-placeholder" aria-label="Sunset ceremony">Photo</div>
+                        <img src="images/optimized/medium/_0350404-by-c2.jpg" alt="Bride and groom first kiss at sunset waterfront ceremony with golden light" loading="lazy" decoding="async">
                         <div class="gallery-item__overlay">
                             <div class="gallery-item__info">
                                 <h4>Sunset Ceremony</h4>
                                 <span>Ceremonies</span>
                             </div>
                         </div>
+                        <button class="gallery-item__pinterest" aria-label="Save to Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </button>
                         <div class="gallery-item__zoom" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -1734,13 +1919,18 @@
 
                     <!-- Joy & Laughter -->
                     <article class="gallery-item" data-category="couples" role="listitem">
-                        <div class="image-placeholder" aria-label="Couple laughing">Photo</div>
+                        <img src="images/optimized/medium/_1058351-jj-p.jpg" alt="Couple laughing together during romantic wedding portraits at Riviera" loading="lazy" decoding="async">
                         <div class="gallery-item__overlay">
                             <div class="gallery-item__info">
                                 <h4>Joy & Laughter</h4>
                                 <span>Couples</span>
                             </div>
                         </div>
+                        <button class="gallery-item__pinterest" aria-label="Save to Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </button>
                         <div class="gallery-item__zoom" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -1751,13 +1941,18 @@
 
                     <!-- Wedding Cake -->
                     <article class="gallery-item" data-category="details" role="listitem">
-                        <div class="image-placeholder" aria-label="Wedding cake">Photo</div>
+                        <img src="images/optimized/medium/_0350231-by-d.jpg" alt="Elegant multi-tier wedding cake with floral accents at Riviera reception" loading="lazy" decoding="async">
                         <div class="gallery-item__overlay">
                             <div class="gallery-item__info">
                                 <h4>Wedding Cake</h4>
                                 <span>Details</span>
                             </div>
                         </div>
+                        <button class="gallery-item__pinterest" aria-label="Save to Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </button>
                         <div class="gallery-item__zoom" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -1768,13 +1963,18 @@
 
                     <!-- Ballroom Reception -->
                     <article class="gallery-item" data-category="receptions" role="listitem">
-                        <div class="image-placeholder" aria-label="Ballroom reception overview">Photo</div>
+                        <img src="images/optimized/medium/_24m1277-jb-25-r.jpg" alt="Elegant ballroom reception with chandeliers and panoramic water views" loading="lazy" decoding="async">
                         <div class="gallery-item__overlay">
                             <div class="gallery-item__info">
                                 <h4>Ballroom Reception</h4>
                                 <span>Receptions</span>
                             </div>
                         </div>
+                        <button class="gallery-item__pinterest" aria-label="Save to Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </button>
                         <div class="gallery-item__zoom" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -1785,13 +1985,18 @@
 
                     <!-- Water Views -->
                     <article class="gallery-item" data-category="venue" role="listitem">
-                        <div class="image-placeholder" aria-label="Water views">Photo</div>
+                        <img src="images/optimized/medium/_0359671-by-p.jpg" alt="Couple embracing with stunning Great South Bay water views at sunset" loading="lazy" decoding="async">
                         <div class="gallery-item__overlay">
                             <div class="gallery-item__info">
                                 <h4>Water Views</h4>
                                 <span>Venue</span>
                             </div>
                         </div>
+                        <button class="gallery-item__pinterest" aria-label="Save to Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </button>
                         <div class="gallery-item__zoom" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -1802,13 +2007,18 @@
 
                     <!-- Ring Details -->
                     <article class="gallery-item" data-category="details" role="listitem">
-                        <div class="image-placeholder" aria-label="Wedding rings">Photo</div>
+                        <img src="images/optimized/medium/_24m3464-sm-d.jpg" alt="Wedding rings and bridal jewelry details at Riviera Waterfront Mansion" loading="lazy" decoding="async">
                         <div class="gallery-item__overlay">
                             <div class="gallery-item__info">
                                 <h4>Ring Details</h4>
                                 <span>Details</span>
                             </div>
                         </div>
+                        <button class="gallery-item__pinterest" aria-label="Save to Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </button>
                         <div class="gallery-item__zoom" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -1819,13 +2029,18 @@
 
                     <!-- Cocktail Hour -->
                     <article class="gallery-item" data-category="receptions" role="listitem">
-                        <div class="image-placeholder" aria-label="Cocktail hour">Photo</div>
+                        <img src="images/optimized/medium/_24m3481-sm-r.jpg" alt="Guests enjoying cocktail hour on the waterfront terrace at Riviera" loading="lazy" decoding="async">
                         <div class="gallery-item__overlay">
                             <div class="gallery-item__info">
                                 <h4>Cocktail Hour</h4>
                                 <span>Receptions</span>
                             </div>
                         </div>
+                        <button class="gallery-item__pinterest" aria-label="Save to Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </button>
                         <div class="gallery-item__zoom" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -1855,6 +2070,41 @@
             </div>
         </section>
 
+        <!-- Photo block examples: 1 horizontal (4:3) or 2 portrait (9:16) side by side -->
+        <section class="section section--cream">
+            <div class="container">
+                <div class="photo-blocks-row">
+                    <!-- Option A: one horizontal 4:3 -->
+                    <div class="photo-block photo-block--single">
+                        <div class="photo-block__cell">
+                            <img src="images/optimized/large/_24m0986_panorama-jb-25-c.jpg" alt="Panoramic view of wedding ceremony at Riviera Waterfront Mansion" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                    <!-- Option B: two 9:16 portrait placeholders side by side -->
+                    <div class="photo-block photo-block--double">
+                        <div class="photo-block__cell">
+                            <img src="images/optimized/medium/_0359750-by-p.jpg" alt="Bride portrait at Riviera Waterfront Mansion" loading="lazy" decoding="async">
+                        </div>
+                        <div class="photo-block__cell">
+                            <img src="images/optimized/medium/_1058231-jj-p.jpg" alt="Groom portrait at waterfront venue" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                    <!-- Option C: three 9:16 portrait placeholders side by side -->
+                    <div class="photo-block photo-block--triple">
+                        <div class="photo-block__cell">
+                            <img src="images/optimized/medium/_24m3284-sm-p.jpg" alt="Couple portrait in gardens at Riviera" loading="lazy" decoding="async">
+                        </div>
+                        <div class="photo-block__cell">
+                            <img src="images/optimized/medium/_24m4616-tc-p.jpg" alt="Romantic portrait on waterfront dock" loading="lazy" decoding="async">
+                        </div>
+                        <div class="photo-block__cell">
+                            <img src="images/optimized/medium/_24m5730-jd-p.jpg" alt="Wedding couple with bay views" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Featured Spaces -->
         <section class="section section--lg spaces-section">
             <div class="container">
@@ -1866,7 +2116,7 @@
                 
                 <div class="spaces-grid">
                     <article class="space-card">
-                        <div class="image-placeholder">Photo</div>
+                        <img src="images/optimized/medium/_0350334-by-c2.jpg" alt="Waterfront gazebo ceremony at Riviera with Great South Bay views" loading="lazy" decoding="async">
                         <div class="space-card__overlay">
                             <div class="space-card__content">
                                 <h3>Waterfront Gazebo</h3>
@@ -1882,7 +2132,7 @@
                     </article>
                     
                     <article class="space-card">
-                        <div class="image-placeholder">Photo</div>
+                        <img src="images/optimized/medium/_24m1277-jb-25-r.jpg" alt="Grand ballroom reception with elegant chandeliers and water views" loading="lazy" decoding="async">
                         <div class="space-card__overlay">
                             <div class="space-card__content">
                                 <h3>Grand Ballroom</h3>
@@ -1898,7 +2148,7 @@
                     </article>
                     
                     <article class="space-card">
-                        <div class="image-placeholder">Photo</div>
+                        <img src="images/optimized/medium/_0359652-by-p.jpg" alt="Romantic couple portraits on private dock overlooking Great South Bay" loading="lazy" decoding="async">
                         <div class="space-card__overlay">
                             <div class="space-card__content">
                                 <h3>Private Dock</h3>
@@ -1926,7 +2176,7 @@
                 </header>
                 
                 <div class="video-wrapper">
-                    <div class="image-placeholder">Video Thumbnail</div>
+                    <img src="images/optimized/large/_0359830-by-p.jpg" alt="Video preview: Wedding celebration at Riviera Waterfront Mansion" loading="lazy" decoding="async">
                     <button class="video-play-btn" aria-label="Play video">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <polygon points="5 3 19 12 5 21 5 3"/>
@@ -1971,6 +2221,12 @@
             <div class="lightbox__caption">
                 <h4 id="lightboxTitle"></h4>
                 <span id="lightboxCategory"></span>
+                <button class="lightbox__pinterest" id="lightboxPinterest" aria-label="Save to Pinterest">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                    </svg>
+                    Save to Pinterest
+                </button>
             </div>
         </div>
         <button class="lightbox__nav lightbox__next" aria-label="Next image">
@@ -2007,6 +2263,11 @@
                                 <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
                             </svg>
                         </a>
+                        <a href="https://www.pinterest.com/rivierawaterfrontmansion" target="_blank" rel="noopener" aria-label="Follow us on Pinterest">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
                 
@@ -2016,6 +2277,7 @@
                         <ul>
                             <li><a href="index.html">Home</a></li>
                             <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="real-weddings.html">Real Weddings</a></li>
                             <li><a href="menu.html">Menu</a></li>
                         </ul>
                     </div>
@@ -2122,6 +2384,32 @@
         });
 
         /* ==============================================
+           PINTEREST SHARING
+           ============================================== */
+        function getPinterestUrl(imageUrl, description) {
+            const pageUrl = window.location.href;
+            const fullImageUrl = new URL(imageUrl, window.location.origin).href;
+            const desc = encodeURIComponent(description + ' | Riviera Waterfront Mansion - Long Island Wedding Venue');
+            return `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(pageUrl)}&media=${encodeURIComponent(fullImageUrl)}&description=${desc}`;
+        }
+
+        function pinImage(imageUrl, description) {
+            const url = getPinterestUrl(imageUrl, description);
+            window.open(url, '_blank', 'width=750,height=600');
+        }
+
+        // Add click handlers to all Pinterest buttons
+        document.querySelectorAll('.gallery-item__pinterest').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const item = this.closest('.gallery-item');
+                const img = item.querySelector('img');
+                const title = item.querySelector('h4')?.textContent || 'Wedding Photo';
+                pinImage(img.src, title);
+            });
+        });
+
+        /* ==============================================
            LIGHTBOX FUNCTIONALITY
            ============================================== */
         const lightbox = document.getElementById('lightbox');
@@ -2173,13 +2461,19 @@
             const item = visibleItems[currentIndex];
             const title = item.querySelector('.gallery-item__info h4')?.textContent || '';
             const category = item.querySelector('.gallery-item__info span')?.textContent || '';
+            const imgSrc = item.querySelector('img')?.src || '/images/placeholder.jpg';
             
-            // For placeholder images, use a placeholder URL
-            lightboxImage.src = '/images/placeholder.jpg';
+            lightboxImage.src = imgSrc;
             lightboxImage.alt = title;
             lightboxTitle.textContent = title;
             lightboxCategory.textContent = category;
             lightboxCounter.textContent = `${currentIndex + 1} / ${visibleItems.length}`;
+            
+            // Update Pinterest button
+            const pinterestBtn = document.getElementById('lightboxPinterest');
+            if (pinterestBtn) {
+                pinterestBtn.onclick = () => pinImage(imgSrc, title);
+            }
         }
 
         function navigateLightbox(direction) {
