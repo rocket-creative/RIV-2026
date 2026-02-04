@@ -2217,10 +2217,11 @@
         }
     </style>
 </head>
-<body>
+<body class="magazine-page">
     <!-- Skip Navigation -->
     <a href="#main-content" class="sr-only" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
     
+    <div class="magazine-content">
     <!-- Header -->
     <header class="site-header" role="banner">
         <div class="header-container">
@@ -2672,30 +2673,79 @@
             </div>
         </section>
 
-        <!-- Why Choose Riviera Section -->
+        <!-- Why Choose Riviera Section with Venue Photos -->
         <section class="section section-light">
             <div class="container">
-                <div class="section-header reveal">
+                <div class="section-header reveal centered">
                     <span class="section-tag">Why Riviera</span>
                     <h2>Why Couples Choose Riviera</h2>
                 </div>
                 
-                <div style="max-width: 900px; margin: 0 auto;">
-                    <div class="reveal" style="margin-bottom: var(--space-2xl);">
-                        <h3 style="font-size: 1.5rem; margin-bottom: var(--space-md); color: var(--color-charcoal);">Waterfront Ceremony & Sunset Views</h3>
-                        <p style="color: var(--color-charcoal-light); line-height: 1.8;">Exchange vows with the Great South Bay as your backdrop, then sneak away for sunset portraits along our waterfront gardens. The light, the water, and the architecture work together to create photos you'll cherish forever.</p>
+                <!-- Asymmetric Layout: Photo + Text -->
+                <div class="asymmetric-layout reveal" style="margin-bottom: var(--space-3xl);">
+                    <div>
+                        <img src="images/optimized/large/_0350334-by-c2.jpg" 
+                             alt="Waterfront ceremony at Riviera with Great South Bay backdrop"
+                             class="image-portrait"
+                             loading="lazy">
                     </div>
-                    
-                    <div class="reveal" style="margin-bottom: var(--space-2xl);">
-                        <h3 style="font-size: 1.5rem; margin-bottom: var(--space-md); color: var(--color-charcoal);">Elegant Ballroom Receptions</h3>
-                        <p style="color: var(--color-charcoal-light); line-height: 1.8;">Our ballroom blends classic Long Island charm with modern comfort. Chandeliers, neutral tones, and flexible floor plans allow you to personalize the space with your décor, florals, and lighting.</p>
-                    </div>
-                    
-                    <div class="reveal">
-                        <h3 style="font-size: 1.5rem; margin-bottom: var(--space-md); color: var(--color-charcoal);">Seamless, Supported Planning</h3>
-                        <p style="color: var(--color-charcoal-light); line-height: 1.8;">We've hosted hundreds of weddings at Riviera. From timeline suggestions to vendor coordination, our team knows how to guide the day so you can relax and enjoy every moment with your guests.</p>
+                    <div style="display: flex; flex-direction: column; justify-content: center; padding: var(--space-lg);">
+                        <h3 style="font-size: 2rem; margin-bottom: var(--space-md); color: var(--color-charcoal); font-weight: 300;">Waterfront Ceremony & Sunset Views</h3>
+                        <p style="color: var(--color-charcoal-light); line-height: 1.8; font-size: 1.0625rem;">Exchange vows with the Great South Bay as your backdrop, then sneak away for sunset portraits along our waterfront gardens. The light, the water, and the architecture work together to create photos you'll cherish forever.</p>
                     </div>
                 </div>
+                
+                <!-- Reverse Asymmetric Layout -->
+                <div class="asymmetric-layout reverse reveal" style="margin-bottom: var(--space-3xl);">
+                    <div style="display: flex; flex-direction: column; justify-content: center; padding: var(--space-lg);">
+                        <h3 style="font-size: 2rem; margin-bottom: var(--space-md); color: var(--color-charcoal); font-weight: 300;">Elegant Ballroom Receptions</h3>
+                        <p style="color: var(--color-charcoal-light); line-height: 1.8; font-size: 1.0625rem;">Our ballroom blends classic Long Island charm with modern comfort. Chandeliers, neutral tones, and flexible floor plans allow you to personalize the space with your décor, florals, and lighting.</p>
+                    </div>
+                    <div>
+                        <img src="images/optimized/large/_24m3284-sm-p.jpg" 
+                             alt="Elegant ballroom reception at Riviera Waterfront Mansion"
+                             class="image-portrait"
+                             loading="lazy">
+                    </div>
+                </div>
+                
+                <!-- Uneven Image Grid -->
+                <div class="image-grid-uneven reveal" style="margin-bottom: var(--space-2xl);">
+                    <div>
+                        <img src="images/optimized/large/_0350708-by-r.jpg" 
+                             alt="Riviera waterfront gardens and ceremony space"
+                             class="image-landscape"
+                             loading="lazy">
+                    </div>
+                    <div>
+                        <img src="images/optimized/large/_1058484-by-r.jpg" 
+                             alt="Cocktail hour space at Riviera overlooking the bay"
+                             class="image-landscape"
+                             loading="lazy">
+                    </div>
+                </div>
+                
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <div class="reveal">
+                        <h3 style="font-size: 2rem; margin-bottom: var(--space-md); color: var(--color-charcoal); font-weight: 300;">Seamless, Supported Planning</h3>
+                        <p style="color: var(--color-charcoal-light); line-height: 1.8; font-size: 1.0625rem;">We've hosted hundreds of weddings at Riviera. From timeline suggestions to vendor coordination, our team knows how to guide the day so you can relax and enjoy every moment with your guests.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Full Bleed Venue Showcase -->
+        <section class="full-bleed-image">
+            <img src="images/optimized/large/_24m0986_panorama-jb-25-c.jpg" 
+                 alt="Panoramic view of Riviera Waterfront Mansion overlooking Great South Bay at sunset"
+                 loading="lazy">
+            <div class="overlay-text">
+                <span class="section-tag section-tag-light">The Venue</span>
+                <h2 style="color: var(--color-white); margin-bottom: var(--space-md);">Where Water<br>Meets Celebration</h2>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.125rem; line-height: 1.7; max-width: 500px;">
+                    Every corner of Riviera tells a story. From waterfront ceremonies to elegant ballroom receptions, 
+                    our venue provides the perfect backdrop for your wedding day.
+                </p>
             </div>
         </section>
 
@@ -3696,5 +3746,6 @@
     
     <!-- Cookie Consent Manager -->
     <script src="consent-manager.js"></script>
+    </div><!-- /.magazine-content -->
 </body>
 </html>
