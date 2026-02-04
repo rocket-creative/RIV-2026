@@ -73,7 +73,7 @@ const weddingData = {
                 { file: '_0350334-by-c2.jpg', type: 'ceremony', alt: 'Brianna and Youssef exchange vows at Riviera waterfront gazebo overlooking Great South Bay at sunset' },
                 { file: '_0350379-by-c2.jpg', type: 'ceremony', alt: 'Outdoor wedding ceremony with guests seated facing the waterfront at Riviera Mansion' },
                 { file: '_0350404-by-c2.jpg', type: 'ceremony', alt: 'Bride and groom first kiss at waterfront ceremony with golden sunset backdrop' },
-                { file: '_0359652-by-p.jpg', type: 'portrait', alt: 'Brianna and Youssef romantic portrait on Riviera private dock at golden hour' },
+                { file: '_0359652-by-p.jpg', type: 'portrait', alt: 'Brianna and Youssef romantic portrait at Riviera waterfront gazebo at golden hour' },
                 { file: '_0359671-by-p.jpg', type: 'portrait', alt: 'Couple shares intimate moment with Great South Bay sunset behind them' },
                 { file: '_0359750-by-p.jpg', type: 'portrait', alt: 'Newlyweds walking hand in hand along the waterfront at Riviera Mansion' },
                 { file: '_0350231-by-d.jpg', type: 'details', alt: 'Elegant wedding rings displayed on vintage ring box with autumn florals' },
@@ -168,7 +168,7 @@ const weddingData = {
             images: [
                 { file: '_24M4616-tc-p.jpg', type: 'portrait', alt: 'Taylor and Christopher elegant portrait on Riviera waterfront at dusk' },
                 { file: '_24M4684-tc-p.jpg', type: 'portrait', alt: 'Couple sharing a laugh during sunset portraits by the bay' },
-                { file: '_24M4797-tc-p.jpg', type: 'portrait', alt: 'Bride and groom romantic portrait on the private dock' },
+                { file: '_24M4797-tc-p.jpg', type: 'portrait', alt: 'Bride and groom romantic portrait at the waterfront gazebo' },
                 { file: '_24M5126-tc-p.jpg', type: 'portrait', alt: 'Newlyweds embracing with waterfront sunset behind them' },
                 { file: '_2005599-tc-p.jpg', type: 'portrait', alt: 'Stunning bridal portrait in the elegant bridal suite' },
                 { file: '_2006092-tc-p.jpg', type: 'portrait', alt: 'Groom portrait in the gentlemens lounge' },
@@ -200,7 +200,7 @@ const weddingData = {
             images: [
                 { file: '_24M5730-jd-p.jpg', type: 'portrait', alt: 'Jessica and Daniel romantic portrait surrounded by spring blooms at Riviera' },
                 { file: '_24M5917-jd-p.jpg', type: 'portrait', alt: 'Couple walking through the flowering garden at sunset' },
-                { file: '_24M5980-jd-p.jpg', type: 'portrait', alt: 'Bride and groom sharing intimate moment on the waterfront dock' },
+                { file: '_24M5980-jd-p.jpg', type: 'portrait', alt: 'Bride and groom sharing intimate moment at the waterfront gazebo' },
                 { file: '_24M6001-jd-p.jpg', type: 'portrait', alt: 'Newlyweds portrait with Great South Bay sparkling in background' },
                 { file: '_24M6243-jd-p.jpg', type: 'portrait', alt: 'Romantic embrace under the historic mansion columns' },
                 { file: '_2007635-jd-p.jpg', type: 'portrait', alt: 'Bride portrait in stunning lace gown in the bridal suite' },
